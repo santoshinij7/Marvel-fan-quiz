@@ -1,91 +1,72 @@
 var readlineSync = require("readline-sync");
-
 var score = 0;
+console.log("Hello Boss!!");
+console.log();
 
-function welcome() {
- var userName = readlineSync.question("What's your name? ");
-console.log("Welcome "+ userName +"!"+ " Are you a Marvel Fan ?");
-}
+var userAnswer = readlineSync.question("Please type your name ");
+console.log("WELCOME, " + userAnswer + " " + "jii 🙏");
+console.log();
 
-welcome();
-console.log("Let's play some quiz, here we go with our first question")
-console.log("-------------------------------------")
+console.log("This is a Fun quiz about Marvel movies !! 😉");
+console.log();
 
-function checkAnswers(questions) {
-  for (var i = 0; i < questionsList.length; i++) {
-    var userAnswer = readlineSync.question(questions[i].question);
-    if (userAnswer == questionsList[i].answer) {
-      score++;
-      console.log("welldone! go for next");
-      console.log("--------------------");
+console.log("👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇")
+console.log();
 
-      } else {
-      console.log(" bro! Try harder");
-      console.log("--------------------");
+console.log("Let's START...");
+console.log("")
+function play(question, answer) {
+  var userAnswer = readlineSync.question(question);
 
-    }
-  }
-}
-
-// Objects of questions
-var q1 = {
-  question: "How many Infinity stones are there ? ",
-  answer: 6
+  if (userAnswer === answer) {
+    console.log("well , That's Correct!");
+    score = score + 1;
+  } else {
+    console.log("Oops! Try harder!")
+  };
+  console.log();
 };
 
-var q2 = {
-  question: "Where is Captain America from ? ",
+var myQues1 = {
+  question: "1. How many Infinity stones are there ?  ",
+  answer: "6"
+};
+var myQues2 = {
+  question: "2. Where is Captain America from ?  ",
   answer: "brooklyn"
 };
-
-var q3 = {
-  question: "What type of doctor is Doctor strange ? ",
-  answer: "neurosurgeon"
-};
-
-var q4 = {
-  question: "Tony Stark is known for ? ",
+var myQues3 = {
+  question: "3. Tony Stark is known for ?  ",
   answer: "iron man"
 };
-
-var q5 = {
-  question: "Who was able to pick up Thor's Hammer in Endgame ? ",
+var myQues4 = {
+  question: "4. Who was able to pick up Thor's Hammer in Endgame ?  ",
   answer: "captain america"
 };
-
-//questionNewList
-var q6 = {
-  question: "Who did The Winter Soldier take shelter with during Infinity War ? ",
-  answer: "black panther"
+var myQues5 = {
+  question: "5. In Avengers Endgame, who kills Thanos in the first half of the movie ?  ",
+  answer: "thor"
 };
 
-var q7 = {
-  question: "In the first Avengers movie, how many avengers do we actually see ? ",
-  answer: 6
+var myQuiz = [myQues1, myQues2, myQues3, myQues4, myQues5]
+
+for (var i = 0; i < myQuiz.length; i++) {
+  var playQuiz = myQuiz[i];
+  play(playQuiz.question, playQuiz.answer)
 };
 
-var q8 = {
-  question: "In Avengers Endgame, who kills Thanos in the first half of the movie ? ",
-  answer: "Thor"
+console.log("You scored " + score + " out of 5! ");
+console.log();
+
+var rating = {
+  0: "You don't know at all!",
+  1: "You should watch more, I guess",
+  2: "You know little about MCU",
+  3: "hmm..you are good at MCU",
+  4: "Let's watch some movies together.",
+  5: "Arey yaar❤️, you know everything!!!"
 };
 
-// Array of questions
-var questionsList = [q1, q2, q3, q4, q5];
-checkAnswers(questionsList);
-var questionsNewList = [q6,q7,q8];
-checkAnswers(questionsNewList);
-
-if (score == questionsList.length) {
-  console.log("Your score is: " + score + "/" + questionsList.length);
-  console.log("Congratulations! You've advanced to next level.");
-  console.log("--------------------")
-
-  var score = 0;
-  checkAnswers(questionsNewList);
-  var totalQuestions = questionsList.length + questionsNewList.length;
-  var finalScore = questionsList.length + score;
-  console.log("Your score is: " + finalScore + "/" + totalQuestions);
-
-} else {
-  console.log("Your score is: " + score + "/" + questionsList.length);
-}
+for (var i = 0; i < 1; i++) {
+  console.log(rating[score])
+};
